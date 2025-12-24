@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 def estimated_price(theta0, theta1, mileage):
@@ -38,7 +39,7 @@ def learning_loop(mileage, price):
         theta1 = theta1 - tmp_theta1
         if abs(tmp_theta0) < 0.0001 and abs(tmp_theta1) < 0.005:
             break
-    
+
     theta0_denormalized = theta0 * 1000
     theta1_denormalized = theta1 * 0.01
     return [theta0_denormalized, theta1_denormalized]
@@ -50,6 +51,19 @@ def save_thetas(theta0, theta1):
     file.write(f"{theta1}\n")
 
 
+def display_data(mileage, price, theta0, theta1):
+    est_prices = []
+    for m in mileage:
+        est_prices.append(estimated_price(theta0, theta1, m))
+
+    plt.title("Car price prediction based on mileage")
+    plt.scatter(mileage, price)
+    plt.plot(mileage, est_prices, color="red")
+    plt.xlabel("Mileage")
+    plt.ylabel("Price")
+    plt.show()
+
+
 def main():
     try:
         data = np.loadtxt("data.csv", skiprows=1, delimiter=",")
@@ -57,6 +71,7 @@ def main():
         price = data[:, 1]
         thetas = learning_loop(mileage, price)
         save_thetas(thetas[0], thetas[1])
+        display_data(mileage, price, thetas[0], thetas[1])
     except Exception as e:
         print(f"Error: {e}")
 
