@@ -60,17 +60,13 @@ y_hat = theta0 + (theta1 * x)
 ```
 
 - y_hat : la valeur prédite
-    
     → le prix estimé
     
 - theta0 : le biais
-    
     → le prix estimé si le kilométrage était à 0
     
 - theta1 : le poids
-    
     → la variation du prix estimé de la voiture à chaque unité de kilométrage
     
 - x : la variable explicative
-    
     → le kilométrage
