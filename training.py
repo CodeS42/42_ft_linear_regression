@@ -48,7 +48,7 @@ def learning_loop(mileage, price):
 def save_thetas(theta0, theta1):
     file = open("thetas.txt", "w")
     file.write(f"{theta0}\n")
-    file.write(f"{theta1}\n")
+    file.write(f"{theta1}")
 
 
 def display_data(mileage, price, theta0, theta1):
