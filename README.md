@@ -16,6 +16,7 @@ Le but n’est donc pas de faire en sorte que notre algorithme soit capable d’
 
 Les estimations fournies par le modèle seront, quant à elles, linéaires en fonction du kilométrage, puisqu’elles suivent une droite.
 
+---
 
 # Partie bonus
 
