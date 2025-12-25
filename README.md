@@ -25,3 +25,53 @@ Il y a 3 bonus :
 - Le premier consiste à représenter les données du fichier data.csv dans un graphique, sous forme de nuages de points.
 - Le second nous demande d’ajouter la droite correspondant aux estimations du modèle dans ce même graphique.
 - Le dernier vise à créer un programme capable de  calculer la précision de notre algorithme.
+
+
+---
+
+# Programme n°1
+
+Ce programme va :
+
+- Demander à l’utilisateur de fournir un input : le kilométrage d’une voiture.
+- Lire le fichier dans lequel se trouvent theta0 et theta1.
+    
+    → Si le fichier n’existe pas, on garde leur valeur de base : theta0 = 0 et theta1 = 0.
+    
+- Estimer le prix de cette voiture grâce au modèle de régression linéaire.
+
+Sans le programme n° 2, les estimations de ce programme n’ont donc aucune réelle valeur, car il ne connait ni la valeur de theta0 ni celle de theta1.
+
+## Explications du calcul
+
+---
+
+### Le modèle de régression linéaire
+
+**Définition :**
+
+Le modèle de régression linéaire est un calcul qui va permettre de représenter la relation entre une variable explicative (ici, le kilométrage) et une valeur cible (le prix estimé).
+
+Ici, il s’agit d’une régression linéaire simple : il n’y a qu’une seule variable explicative.
+
+**Calcul :**
+
+```jsx
+y_hat = theta0 + (theta1 * x)
+```
+
+- y_hat : la valeur prédite
+    
+    → le prix estimé
+    
+- theta0 : le biais
+    
+    → le prix estimé si le kilométrage était à 0
+    
+- theta1 : le poids
+    
+    → la variation du prix estimé de la voiture à chaque unité de kilométrage
+    
+- x : la variable explicative
+    
+    → le kilométrage
