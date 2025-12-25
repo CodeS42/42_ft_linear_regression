@@ -1,7 +1,5 @@
 # Partie obligatoire
 
----
-
 Le but du projet est de créer deux programmes : 
 
 - Le premier doit être capable d’estimer le prix d’une voiture en fonction de son kilométrage, à l’aide d’un modèle de régression linéaire simple (= une seule variable explicative).
@@ -20,8 +18,6 @@ Les estimations fournies par le modèle seront, quant à elles, linéaires en fo
 
 
 # Partie bonus
-
----
 
 Il y a 3 bonus :
 
