@@ -42,9 +42,8 @@ Ce programme va :
 
 Sans le programme n° 2, les estimations de ce programme n’ont donc aucune réelle valeur, car il ne connait ni la valeur de theta0 ni celle de theta1.
 
-## Explications du calcul
 
----
+## Explications du calcul
 
 ### Le modèle de régression linéaire
 
