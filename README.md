@@ -60,13 +60,50 @@ y_hat = theta0 + (theta1 * x)
 ```
 
 - y_hat : la valeur prédite
+    
     → le prix estimé
     
 - theta0 : le biais
+    
     → le prix estimé si le kilométrage était à 0
     
 - theta1 : le poids
+    
     → la variation du prix estimé de la voiture à chaque unité de kilométrage
     
 - x : la variable explicative
+    
     → le kilométrage
+
+
+---
+
+# Programme n°2
+
+Ce programme va :
+
+- Récupérer le contenu du data.csv.
+- Normaliser les prix et les kilométrages.
+    
+    → Cela permet, lors du calcul des corrections, d’obtenir des nombres plus petits, et d’améliorer la convergence. Avec des nombres trop grands, les corrections pourraient être trop grandes, et la convergence vers le minimum de l’erreur pourrait ne jamais être atteinte.
+    
+- Définir un learning rate (= le facteur multiplicatif qui controle l’amplitude de la correction appliquée aux thetas).
+    
+    → Sans learning rate (ou si celui-ci est trop élevé), les corrections appliquées pourraient être trop grandes, et empêcher la convergence vers le minimum de l’erreur.
+    
+- Initialiser les thetas à 0, car on ne connait pas encore leur valeur.
+- Lancer la boucle d’apprentissage :
+    - Utiliser le modèle de régression linéaire pour calculer les prix estimés pour chaque kilométrage du data.csv.
+    - Calculer l’erreur entre chaque prix estimé et chaque prix du data.csv.
+    - Calculer la correction du theta0 et celle du theta1.
+    - Mettre à jour simultanément theta0 et theta1.
+        
+        → S’ils ne sont pas mis à jour simultanément, les résultats pourraient être faussés.
+        
+    - Quitter la boucle si la correction des thetas est suffisamment faible.
+        
+        → Plus l’erreur est faible, plus la correction l’est aussi.
+        
+- Dénormaliser theta0 et theta1, pour retrouver des valeurs réalistes qui nous permettront d’obtenir le véritable prix estimé.
+- Enregistrer les thetas dans un fichier pour que le programme n°1 puisse les récupérer.
+- Afficher un graphique contenant le nuage de points et la droite afin de visualiser la tendance moyenne des prix des voitures en fonction de leur kilométrage (bonus).
