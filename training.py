@@ -14,13 +14,13 @@ def calculate_correction_theta0(learning_rate, m, errors):
     return learning_rate * (1 / m) * sum(errors)
 
 
-def calculate_correction_theta1(learning_rate, m, errors, mileage):
-    return learning_rate * (1 / m) * sum(errors * mileage)
+def calculate_correction_theta1(learning_rate, m, errors, mileages):
+    return learning_rate * (1 / m) * sum(errors * mileages)
 
 
 def learning_loop(mileage, price):
-    mileage_normalized = mileage / 100000
-    price_normalized = price / 1000
+    mileages_normalized = mileage / 100000
+    prices_normalized = price / 1000
     learning_rate = 0.05
     len_data = len(mileage)
     theta0 = 0
@@ -29,12 +29,12 @@ def learning_loop(mileage, price):
     while True:
         est_prices = []
         errors = []
-        for m in mileage_normalized:
+        for m in mileages_normalized:
             est_prices.append(estimated_price(theta0, theta1, m))
-        for ep, p in zip(est_prices, price_normalized):
+        for ep, p in zip(est_prices, prices_normalized):
             errors.append(calculate_error(ep, p))
         tmp_theta0 = calculate_correction_theta0(learning_rate, len_data, errors)
-        tmp_theta1 = calculate_correction_theta1(learning_rate, len_data, errors, mileage_normalized)
+        tmp_theta1 = calculate_correction_theta1(learning_rate, len_data, errors, mileages_normalized)
         theta0 = theta0 - tmp_theta0
         theta1 = theta1 - tmp_theta1
         if abs(tmp_theta0) < 0.0001 and abs(tmp_theta1) < 0.005:

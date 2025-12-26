@@ -56,13 +56,9 @@ Ici, il s’agit d’une régression linéaire simple : il n’y a qu’une seul
 **Calcul :**
 
 ```jsx
-y_hat = theta0 + (theta1 * x)
+estimated_price = theta0 + (theta1 * mileage)
 ```
 
-- y_hat : la valeur prédite
-    
-    → le prix estimé
-    
 - theta0 : le biais
     
     → le prix estimé si le kilométrage était à 0
@@ -71,9 +67,8 @@ y_hat = theta0 + (theta1 * x)
     
     → la variation du prix estimé de la voiture à chaque unité de kilométrage
     
-- x : la variable explicative
-    
-    → le kilométrage
+
+On multiplie le kilométrage à la variation du prix pour obtenir la variation totale pour ce nombre de kilométrage. Puis on ajoute celle-ci au prix de départ estimé de la voiture pour obtenir le prix estimé par rapport à son kilométrage.
 
 
 ---
@@ -107,3 +102,63 @@ Ce programme va :
 - Dénormaliser theta0 et theta1, pour retrouver des valeurs réalistes qui nous permettront d’obtenir le véritable prix estimé.
 - Enregistrer les thetas dans un fichier pour que le programme n°1 puisse les récupérer.
 - Afficher un graphique contenant le nuage de points et la droite afin de visualiser la tendance moyenne des prix des voitures en fonction de leur kilométrage (bonus).
+
+
+## Explications des calculs
+
+### Le modèle de régression linéaire
+
+→ voir Programme n°1
+
+### L’erreur
+
+**Calcul :**
+
+```jsx
+error = estimated_price - price
+```
+
+On soustrait le prix au prix estimé par le modèle de régression linéaire pour obtenir l’erreur.
+
+Si l’erreur est positive, le prix estimé est trop grand. Si elle est négative, le prix estimé est trop petit.
+
+### Le gradient partiel
+
+*(Ces calculs nous sont donnés dans le sujet)*
+
+**Calculs :**
+
+```jsx
+correction_theta0 = learning_rate * (1/m) * sum(errors)
+correction_theta1 = learning_rate * (1/m) * sum(errors * mileages)
+```
+
+m : nombre de lignes du data.csv
+
+Gradients partiels:
+
+- (1/m) * sum(errors)
+    
+    → Moyenne des erreurs pour theta0.
+    
+- (1/m) * sum(errors * mileages)
+    
+    → Moyenne des erreurs multipliées par les kilométrages pour theta1.
+    
+
+On calcule les gradients partiels de theta0 et theta1.
+
+→ On obtient la correction 
+
+On multiplie ces moyennes par le learning rate pour en appliquer une seule partie.
+
+### La descente de gradient
+
+**Calculs :**
+
+```jsx
+theta0 = theta0 - correction_theta0
+theta1 = theta1 - correction_theta1
+```
+
+On applique la correction calculée aux thetas en les soustrayant à ces derniers.
