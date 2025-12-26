@@ -133,7 +133,7 @@ correction_theta0 = learning_rate * (1/m) * sum(errors)
 correction_theta1 = learning_rate * (1/m) * sum(errors * mileages)
 ```
 
-m : nombre de lignes du data.csv
+m : nombre total de voitures
 
 Gradients partiels:
 
@@ -177,3 +177,48 @@ J’ai donc décidé de créer un programme supplémentaire qui va :
 - Faire l’estimation du prix des voitures du data.csv.
 - Calculer la moyenne des erreurs absolues et la moyenne des prix réels pour calculer le pourcentage de précision.
 - Puis calculer et afficher la précision de mon algorithme en pourcentage.
+
+
+## Explication des calculs
+
+### Le modèle de régression linéaire
+
+→ Voir Programme n°1
+
+### La moyenne des erreurs absolues
+
+**Calcul :**
+
+```jsx
+mean_absolute_error = sum(abs(ep - p) for ep, p in zip(estimated_prices, prices)) / m
+```
+
+m : nombre total de voitures
+
+On fait la somme des erreurs absolues, puis on la divise par le nombre de voitures.
+
+→ L’erreur absolue nous permet d’ignorer le signe de chaque erreur, qui, dans le calcul d’une moyenne, fausserait le résultat en faisant baisser la somme avec des erreurs négatives.
+
+### La moyenne des prix réels
+
+**Calcul :**
+
+```jsx
+average_price = sum(prices) / m
+```
+
+m : nombre total de voitures
+
+On divise la somme des prix réels par le nombre de voitures pour obtenir la moyenne des prix.
+
+### Le pourcentage
+
+**Calcul :**
+
+```jsx
+accuracy_percentage = 100 * (1 - mean_absolute_error / average_prices)
+```
+
+On divise la moyenne des erreurs absolues par la moyenne des prix réels, on soustrait ce résultat à 1, puis on multiplie le tout par 100 pour obtenir le pourcentage de précision de notre algorithme.
+
+→ “1 -” est indispensable pour afficher le pourcentage de précision. Sans lui, le calcul donnerait le pourcentage d’erreur.

@@ -5,12 +5,12 @@ def estimated_prices(mileages, theta0, theta1):
     return [theta0 + (theta1 * m) for m in mileages]
 
 
-def mean_absolute_error(est_prices, prices):
-    return sum(abs(ep - p) for ep, p in zip(est_prices, prices)) / len(est_prices)
+def mean_absolute_error(est_prices, prices, m):
+    return sum(abs(ep - p) for ep, p in zip(est_prices, prices)) / m
 
 
-def calculate_average_prices(prices):
-    return sum(prices) / len(prices)
+def calculate_average_prices(prices, m):
+    return sum(prices) / m
 
 
 def display_accuracy_percentage(mae, average_prices):
@@ -27,8 +27,9 @@ def main():
         mileages = data[:, 0]
         prices = data[:, 1]
         est_prices = estimated_prices(mileages, thetas[0], thetas[1])
-        mae = mean_absolute_error(est_prices, prices)
-        average_prices = calculate_average_prices(prices)
+        m = len(prices)
+        mae = mean_absolute_error(est_prices, prices, m)
+        average_prices = calculate_average_prices(prices, m)
         display_accuracy_percentage(mae, average_prices)
     except Exception as e:
         print(f"Error: {e}")
