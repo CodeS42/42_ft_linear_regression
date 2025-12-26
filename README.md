@@ -43,7 +43,7 @@ Ce programme va :
 Sans le programme n° 2, les estimations de ce programme n’ont donc aucune réelle valeur, car il ne connait ni la valeur de theta0 ni celle de theta1.
 
 
-## Explications du calcul
+## Explication du calcul
 
 ### Le modèle de régression linéaire
 
@@ -104,7 +104,7 @@ Ce programme va :
 - Afficher un graphique contenant le nuage de points et la droite afin de visualiser la tendance moyenne des prix des voitures en fonction de leur kilométrage (bonus).
 
 
-## Explications des calculs
+## Explication des calculs
 
 ### Le modèle de régression linéaire
 
@@ -162,3 +162,18 @@ theta1 = theta1 - correction_theta1
 ```
 
 On applique la correction calculée aux thetas en les soustrayant à ces derniers.
+
+
+---
+
+# Programme bonus
+
+Le bonus visant à réaliser un programme démontrant la précision de notre algorithme est assez libre. 
+
+J’ai donc décidé de créer un programme supplémentaire qui va :
+
+- Récupérer les données du fichier contenant les thetas.
+- Récupérer les données de data.csv.
+- Faire l’estimation du prix des voitures du data.csv.
+- Calculer la moyenne des erreurs absolues et la moyenne des prix réels pour calculer le pourcentage de précision.
+- Puis calculer et afficher la précision de mon algorithme en pourcentage.
